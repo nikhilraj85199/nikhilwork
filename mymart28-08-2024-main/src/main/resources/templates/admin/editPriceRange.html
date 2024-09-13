@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Price Range</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-container div {
+            margin-bottom: 15px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Price Range</h1>
+    <div class="form-container">
+        <form th:action="@{/Admin/editPriceRange}" th:object="${priceRange}" method="post">
+            <input type="hidden" th:field="${priceRange.id}" />
+            <div>
+                <label for="value">Value:</label>
+                <input type="text" id="value" th:field="${priceRange.value}" required />
+            </div>
+            <div>
+                <label for="label">Label:</label>
+                <input type="text" id="label" th:field="${priceRange.label}" required />
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+    <a href="/Admin/managePriceRanges" class="back-link">Back to Manage Price Ranges</a>
+</body>
+</html>

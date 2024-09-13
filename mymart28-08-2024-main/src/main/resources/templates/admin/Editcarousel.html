@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Carousel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body
+        {
+        	background-color:#D4E6F1;
+        }
+</style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Edit Carousel</h1>
+    <!-- Form for editing a carousel -->
+    <form action="/Admin/editcarousel" method="post" enctype="multipart/form-data" class="mt-3">
+        <input type="hidden" name="id" th:value="${carousel.id}">
+       
+        <div class="form-group">
+            <label>Image</label>
+            <input type="file" class="form-control-file" name="imageFile">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Carousel</button>
+    </form>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

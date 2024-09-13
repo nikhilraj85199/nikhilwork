@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Price Ranges</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .price-range-form, .price-range-list {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .price-range-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .price-range-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .price-range-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .price-range-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .price-range-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .price-range-list th, .price-range-list td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .price-range-list th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .price-range-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .price-range-list button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .price-range-list button:hover {
+            background-color: #218838;
+        }
+
+        .price-range-list .delete-button {
+            background-color: #dc3545;
+        }
+
+        .price-range-list .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .button-link {
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Price Ranges</h1>
+    
+    <!-- Add Price Range Form -->
+    <div class="price-range-form">
+        <form th:action="@{/Admin/addPriceRange}" th:object="${newPriceRange}" method="post">
+            <div>
+                <label for="value">Value:</label>
+                <input type="text" id="value" name="value" th:field="${newPriceRange.value}" required />
+            </div>
+            <div>
+                <label for="label">Label:</label>
+                <input type="text" id="label" name="label" th:field="${newPriceRange.label}" required />
+            </div>
+            <button type="submit">Add Price Range</button>
+        </form>
+    </div>
+
+    <!-- Price Range List -->
+    <div class="price-range-list">
+        <h2>Existing Price Ranges</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Value</th>
+                    <th>Label</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="priceRange : ${priceRanges}">
+                    <td th:text="${priceRange.id}"></td>
+                    <td th:text="${priceRange.value}"></td>
+                    <td th:text="${priceRange.label}"></td>
+                    <td>
+                        <a th:href="@{/Admin/editPriceRange/{id}(id=${priceRange.id})}" class="button-link">
+                            <button type="button">Edit</button>
+                        </a>
+                        <form th:action="@{/Admin/deletePriceRange/{id}(id=${priceRange.id})}" method="get" style="display:inline;">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

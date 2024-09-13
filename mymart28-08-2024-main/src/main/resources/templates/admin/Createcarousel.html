@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Carousel</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body
+        {
+        	background-color:#F5B7B1;
+        }
+</style>
+</head>
+
+<body>
+<div class="container mt-5">
+    <h1>Create Carousel</h1>
+    <!-- Form for creating a card -->
+    <form action="/Admin/Createcarousel" method="post" enctype="multipart/form-data" class="mt-3">
+        <div class="form-group">
+            <label for="imageFile">Image</label>
+            <input type="file" class="form-control-file" id="imageFile" name="imageFile" required>
+        </div>
+        
+        <!-- "Create Carousel" button -->
+
+        <button type="submit" class="btn btn-primary">Create Carousel</button>
+    </form>
+</div>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
